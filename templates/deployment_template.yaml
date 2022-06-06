@@ -1,0 +1,22 @@
+# Simple Default Template
+
+apiVersion: apps/<app-name>
+kind: Deployment
+metadata:
+  namespace: <namespace>
+  name: <service>-deployment
+spec:
+  selector:
+    matchLabels:
+      app: <service>
+  replicas: <replica>
+  template:
+    metadata:
+      labels:
+        service: <service>
+    spec:
+      containers:
+      - name: <service>
+        image: <service>:<version>
+        ports:
+        - containerPort: <port>

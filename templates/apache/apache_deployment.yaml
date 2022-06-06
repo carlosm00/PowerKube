@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: #name
+  namespace: easykube
+  labels:
+    app: apache
+spec:
+  replicas: #replica
+  selector:
+    matchLabels:
+      app: apache
+  template:
+    metadata:
+      labels:
+        app: apache
+    spec:
+      containers:
+        - name: apache
+          image: httpd:#version
+          ports:
+            - containerPort: 80
