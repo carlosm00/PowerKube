@@ -64,3 +64,30 @@ function List-Pods {
 function Describe-Pods {
     kubectl describe pods --namespace=$namespace
 }
+
+# .Menu description
+function Select-Menu {
+	# We describe the menu
+	$main_menu= @("0: Pods menu","1: Servies menu","2: Deploymens menu","Every other option: Exit")
+	# We enter menu on interactive mode
+	Write-Host $main_menu	| Format-List
+	# Ask for option
+	$choice = Read-Host "Please, provide your choice: "
+	switch ( $choice ){
+		0 {
+			echo "Pods-Menu"
+		}
+		1 {
+			echo "Services-Menu"
+		}
+		2 { 
+			echo "Deployment-Menu"
+		}
+		default {
+			echo "break"
+			break
+		}
+	}
+}
+
+Select-Menu
