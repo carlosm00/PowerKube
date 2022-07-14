@@ -17,15 +17,15 @@ kubectl config set-context --current --namespace=$namespace
 # .Options setup
 ## Deployments
 ### List all deployments from namespace
-function List-Deployment {
+function Get-Deployment {
     kubectl get deployment --namespace=$namespace
 }
 ### Describe all deployments from namespace
-function Describe-Deployment {
+function Read-Deployment {
     kubectl describe deployment --namespace=$namespace
 }
 ### Create deployment from file
-function Create-Deployment {
+function Add-Deployment {
 	param(
         [Parameter( Mandatory = $true,
                     Position=0,
@@ -38,12 +38,12 @@ function Create-Deployment {
 
 ## Services
 ### GET services from namespace
-function List-Services {
+function Get-Services {
     kubectl get services --namespace=$namespace
 }
 
 ### Create service from file
-function Create-Service {
+function Add-Service {
 	param(
         [Parameter( Mandatory = $true,
                     Position=0,
@@ -56,17 +56,17 @@ function Create-Service {
 
 ## Pods
 ### GET all pods from namespace
-function List-Pods {
+function Get-Pods {
     kubectl get pods --namespace=$namespace
 }
 
 ### Describe pods from namespace
-function Describe-Pods {
+function Read-Pods {
     kubectl describe pods --namespace=$namespace
 }
 
 # .Menu description
-function Select-Menu {
+function Get-Menu {
 	# We describe the menu
 	$main_menu= @("0: Pods menu","1: Servies menu","2: Deploymens menu","Every other option: Exit")
 	# We enter menu on interactive mode
@@ -75,19 +75,19 @@ function Select-Menu {
 	$choice = Read-Host "Please, provide your choice: "
 	switch ( $choice ){
 		0 {
-			echo "Pods-Menu"
+			Write-Host "Pods-Menu"
 		}
 		1 {
-			echo "Services-Menu"
+			Write-Host "Services-Menu"
 		}
 		2 { 
-			echo "Deployment-Menu"
+			Write-Host "Deployment-Menu"
 		}
 		default {
-			echo "break"
+			Write-Host "break"
 			break
 		}
 	}
 }
 
-Select-Menu
+Get-Menu
